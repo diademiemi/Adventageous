@@ -12,22 +12,36 @@ import me.diademiemi.adventageous.lang.Title;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
-public class AdminYearOverview implements Dialog {
+public class AdminModifyYear implements Dialog {
 
     @Override
     public Menu create(Player p, Object... args) {
         int year = (int) args[0];
 
-        MenuBuilder builder = new MenuBuilder(Title.get("admin-year-overview"));
+        MenuBuilder builder = new MenuBuilder(Title.get("admin-year-config", "year", Integer.toString(year)));
         builder.setSize(MenuSize.SIX_ROWS);
         builder.addButton(new GUIButton(), 45, 46, 48, 49, 50, 52, 53);
+
+        builder.addButton(new GUIButton(Material.RED_STAINED_GLASS_PANE, 1, Button.get("previous-page")) {
+            @Override
+            public void onLeftClick(Player p) {
+                new AdminModifyYear().show(p, year - 1);
+            }
+        }, 47);
+
+        builder.addButton(new GUIButton(Material.GREEN_STAINED_GLASS_PANE, 1, Button.get("next-page")) {
+            @Override
+            public void onLeftClick(Player p) {
+                new AdminModifyYear().show(p, year + 1);
+            }
+        }, 51);
 
         for (Months m : Months.values()) {
             if (Advent.getYear(year) != null && Advent.getYear(year).getMonth(m.getNumber() - 1) != null) {
                 builder.addButton(new GUIButton(Material.LIME_SHULKER_BOX, 1, Button.get("admin-configure-month", "month", m.getName())) {
                     @Override
                     public void onLeftClick(Player p) {
-                        new AdminCreateMonthConfirm().show(p, year, m.getNumber());
+                        new AdminModifyMonth().show(p, year, m.getNumber());
                     }
                 }, m.getSlot());
             } else {

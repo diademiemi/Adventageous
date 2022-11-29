@@ -20,7 +20,7 @@ public class AdminCreateMonthConfirm implements Dialog {
         int year = (int) args[0];
         int month = (int) args[1];
 
-        MenuBuilder builder = new MenuBuilder(Title.get("admin-create-month", "year", Integer.toString(year) , "month", Integer.toString(month)));
+        MenuBuilder builder = new MenuBuilder(Title.get("admin-confirm-create-month", "year", Integer.toString(year) , "month", Integer.toString(month)));
         builder.setSize(MenuSize.HALF_ROW);
         builder.addButton(new GUIButton(Material.LIME_SHULKER_BOX, 1, Button.get("admin-confirm")) {
             @Override
@@ -33,14 +33,14 @@ public class AdminCreateMonthConfirm implements Dialog {
 
                 thisYear.setMonth(month - 1, new Month(year, month));
 
-                new AdminYearOverview().show(p, year);
+                new AdminModifyYear().show(p, year);
             }
         }, 1);
         builder.addButton(new GUIButton(Material.RED_SHULKER_BOX, 1, Button.get("admin-cancel")) {
             @Override
             public void onLeftClick(Player p) {
 
-                new AdminYearOverview().show(p, year);
+                new AdminModifyYear().show(p, year);
             }
         }, 3);
 

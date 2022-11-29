@@ -47,7 +47,7 @@ public class Day implements ConfigurationSerializable {
     }
 
     public Day(int date) {
-        this(Material.BLACK_STAINED_GLASS_PANE, null, date, "Day " + date, null);
+        this(Material.GREEN_SHULKER_BOX, Material.GRAY_SHULKER_BOX, date, "Day " + date, null);
     }
 
     public Material getIcon() {

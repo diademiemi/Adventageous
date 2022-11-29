@@ -19,7 +19,7 @@ public class AdminMenu implements Dialog {
         builder.addButton(new GUIButton(Material.LIME_SHULKER_BOX, 1, Button.get("admin-create-month")) {
             @Override
             public void onLeftClick(Player p) {
-                new AdminYearOverview().show(p, 2022);
+                new AdminModifyYear().show(p, 2022);
             }
         }, 4);
 

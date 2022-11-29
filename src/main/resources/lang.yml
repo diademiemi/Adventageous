@@ -8,11 +8,10 @@ messages:
   config-saved-to-disk: "&aThe configuration has been saved to disk."
 titles:
   admin-main-menu: "Admin Menu"
-  admin-create-month: "Create Month {{ year }}-{{ month }}?"
-  admin-configure-month: "Configure Month {{ year }}-{{ month }}"
-  month-config: "Config: {{ month }}"
-  day-config: "Config: {{ day }}"
-  admin-year-overview: "Year Overview"
+  admin-year-config: "Config: {{ year }}"
+  admin-month-config: "Config: {{ year }}-{{ month }}"
+  admin-day-config: "Config: {{ month }}-{{ day }}"
+  admin-confirm-create-month: "Confirm: Create {{ year }}-{{ month }}"
 buttons:
   # Generic
   discard-changes:
@@ -23,6 +22,8 @@ buttons:
     title: "Previous page"
   next-page:
     title: "Next page"
+  return-previous:
+    title: "Return to previous menu"
   # Admin
   admin-confirm:
     title: "Confirm"
@@ -32,3 +33,5 @@ buttons:
     title: "Create month {{ month }}"
   admin-configure-month:
     title: "Configure month {{ month }}"
+  admin-configure-day:
+    title: "Configure day {{ day }}"

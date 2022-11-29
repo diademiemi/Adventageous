@@ -39,6 +39,7 @@ public enum Months {
 
     public String getName() {
         Calendar cal = Calendar.getInstance();
+        cal.clear(); // Prevent overflowing
         cal.set(Calendar.MONTH, number - 1);
         return cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
     }

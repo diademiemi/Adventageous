@@ -1,13 +1,11 @@
 package me.diademiemi.adventageous.command;
 
-import me.diademiemi.adventageous.dialogs.AdminYearOverview;
+import me.diademiemi.adventageous.dialogs.AdminModifyYear;
 import me.diademiemi.adventageous.lang.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.time.Instant;
 
 public class CommandHandler implements CommandExecutor {
 
@@ -17,13 +15,13 @@ public class CommandHandler implements CommandExecutor {
             if (args.length == 0) {
                 if (sender instanceof Player) {
                     if (sender.hasPermission("adventageous.admin")) {
-                        new AdminYearOverview().show((Player) sender);
+                        new AdminModifyYear().show((Player) sender);
                     } else if (sender.hasPermission("adventageous.admin")){
-                        new AdminYearOverview().show((Player) sender, java.time.Year.now().getValue());
+                        new AdminModifyYear().show((Player) sender, java.time.Year.now().getValue());
                     } else {
                         Message.send(sender, "no-permission");
                     }
-                    new AdminYearOverview().show((Player) sender);
+                    new AdminModifyYear().show((Player) sender);
                 } else {
                     Message.send(sender, "no-console");
                 }
@@ -37,7 +35,7 @@ public class CommandHandler implements CommandExecutor {
         } else if (label.equalsIgnoreCase("advent")) {
             if (sender instanceof Player) {
                 if (sender.hasPermission("adventageous.advent")) {
-                    new AdminYearOverview().show((Player) sender, java.time.Year.now().getValue());
+                    new AdminModifyYear().show((Player) sender, java.time.Year.now().getValue());
                 } else {
                     Message.send(sender, "no-permission");
                 }
