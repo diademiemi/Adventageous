@@ -1,0 +1,34 @@
+# Make sure all entries are present
+# If you want to add more languages, copy this file and translate it
+messages:
+  no-permission: "&cYou don't have permission to do that."
+  no-console: "&cYou can't do that from the console."
+  unknown-arguments: "&cUnknown arguments. Type &4/{{ label }} help &cfor help."
+  changes-committed: "&aYour changes have been committed."
+  config-saved-to-disk: "&aThe configuration has been saved to disk."
+titles:
+  admin-main-menu: "Admin Menu"
+  admin-create-month: "Create Month {{ year }}-{{ month }}?"
+  admin-configure-month: "Configure Month {{ year }}-{{ month }}"
+  month-config: "Config: {{ month }}"
+  day-config: "Config: {{ day }}"
+  admin-year-overview: "Year Overview"
+buttons:
+  # Generic
+  discard-changes:
+    title: "Discard changes"
+  commit-changes:
+    title: "Commit changes"
+  previous-page:
+    title: "Previous page"
+  next-page:
+    title: "Next page"
+  # Admin
+  admin-confirm:
+    title: "Confirm"
+  admin-cancel:
+    title: "Cancel"
+  admin-create-month:
+    title: "Create month {{ month }}"
+  admin-configure-month:
+    title: "Configure month {{ month }}"

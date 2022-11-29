@@ -1,0 +1,17 @@
+name: Adventageous
+version: '${version}'
+main: me.diademiemi.adventageous.Adventageous
+api-version: 1.19
+load: STARTUP
+authors: [ diademiemi ]
+description: Minecraft Spigot plugin for advent calendars and daily rewards
+website: https://github.com/diademiemi/Adventageous
+commands:
+  adventageous:
+    description: Admin command for Adventageous
+    usage: /adventageous
+    default: false
+  advent:
+    description: Advent calendar command
+    usage: /advent
+    default: true
