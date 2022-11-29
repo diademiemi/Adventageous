@@ -1,9 +1,10 @@
 package me.diademiemi.adventageous.dialogs;
 
 import me.diademiemi.adventageous.advent.Advent;
-import me.diademiemi.adventageous.advent.Months;
+import me.diademiemi.adventageous.advent.Day;
 import me.diademiemi.adventageous.gui.Dialog;
 import me.diademiemi.adventageous.gui.GUIButton;
+import me.diademiemi.adventageous.gui.GUIListener;
 import me.diademiemi.adventageous.gui.menu.Menu;
 import me.diademiemi.adventageous.gui.menu.MenuBuilder;
 import me.diademiemi.adventageous.gui.menu.MenuSize;
@@ -11,6 +12,7 @@ import me.diademiemi.adventageous.lang.Button;
 import me.diademiemi.adventageous.lang.Title;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class AdminModifyDay implements Dialog {
 
@@ -23,7 +25,41 @@ public class AdminModifyDay implements Dialog {
 
         MenuBuilder builder = new MenuBuilder(Title.get("admin-day-config", "month", Integer.toString(month), "day", Integer.toString(day)));
         builder.setSize(MenuSize.TWO_ROWS);
-        builder.addButton(new GUIButton(), 9, 10, 11, 12, 14, 15, 16, 17);
+        builder.addButton(new GUIButton(), 9, 10, 12, 14, 16);
+
+        Day dayObj = Advent.getYear(year).getMonth(month - 1).getDay(day - 1);
+
+        for (int i = 0; i < 9; i++) {
+
+            if (i < dayObj.getRewards().size() && dayObj.getRewards().get(i) != null) {
+                int finalI = i;
+                builder.addButton(new GUIButton(dayObj.getRewards().get(finalI)) {
+                    @Override
+                    public void onItemDrag(Player p, ItemStack is) {
+                        if (is != null) {
+                            dayObj.setReward(finalI, is.clone());
+                            new AdminModifyDay().show(p, year, month, day);
+                        }
+                    }
+
+                    @Override
+                    public void onRightClick(Player p) {
+                        dayObj.removeReward(finalI);
+                        new AdminModifyDay().show(p, year, month, day);
+                    }
+                }, i);
+            } else {
+                builder.addButton(new GUIButton(Material.WHITE_STAINED_GLASS_PANE, 1, Button.get("admin-empty-slot")) {
+                    @Override
+                    public void onItemDrag(Player p, ItemStack is) {
+                        if (is != null) {
+                            dayObj.addReward(is.clone());
+                            new AdminModifyDay().show(p, year, month, day);
+                        }
+                    }
+                }, i);
+            }
+        }
 
         builder.addButton(new GUIButton(Material.RED_STAINED_GLASS_PANE, 1, Button.get("return-previous")) {
             @Override
@@ -32,6 +68,32 @@ public class AdminModifyDay implements Dialog {
             }
         }, 13);
 
+        builder.addButton(new GUIButton(Material.CHEST, 1, Button.get("admin-quick-set-hotbar")) {
+            @Override
+            public void onLeftClick(Player p) {
+                new AdminSetFromHotbarConfirm().show(p, year, month, day);
+            }
+        }, 11);
+
+        if (dayObj.isHidden()) {
+            builder.addButton(new GUIButton(Material.RED_STAINED_GLASS, 1, Button.get("admin-day-hidden", "hidden", "true")) {
+                @Override
+                public void onLeftClick(Player p) {
+                    dayObj.setHidden(false);
+                    new AdminModifyDay().show(p, year, month, day);
+                }
+            }, 15);
+        } else {
+            builder.addButton(new GUIButton(Material.GREEN_STAINED_GLASS, 1, Button.get("admin-day-hidden", "hidden", "false")) {
+                @Override
+                public void onLeftClick(Player p) {
+                    dayObj.setHidden(true);
+                    new AdminModifyDay().show(p, year, month, day);
+                }
+            }, 15);
+        }
+
+        builder.addButton(new GUIButton(Material.PAPER, 1, Button.get("admin-explain-rightclick-delete")), 17);
 
         return builder.build(p);
     }

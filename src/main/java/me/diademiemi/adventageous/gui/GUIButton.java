@@ -42,24 +42,8 @@ public class GUIButton {
         stack.setItemMeta(itemMeta);
     }
 
-    public GUIButton(ItemStack istack, String... texts) {
-        String name;
-        if (texts.length == 0) {
-            name = "Error: No title";
-        } else {
-            name = texts[0];
-        }
-        ArrayList<String> lore = new ArrayList<String>();
-        for (int i = 1; i < texts.length; i++) {
-            lore.add(texts[i]);
-        }
-        stack = istack;
-
-        ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName(name);
-        itemMeta.setLore(lore);
-
-        stack.setItemMeta(itemMeta);
+    public GUIButton(ItemStack stack) {
+        this.stack = stack;
     }
 
     public void updateAmount(int amount) {
@@ -82,6 +66,6 @@ public class GUIButton {
 
     public void onRightClick(Player p) { }
 
-    public void onItemDrag(Player p, Material m) { }
+    public void onItemDrag(Player p, ItemStack is) { }
 
 }

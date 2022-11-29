@@ -38,16 +38,19 @@ public class Day implements ConfigurationSerializable {
 
     public ArrayList<ItemStack> rewards;
 
-    public Day(Material icon, Material lockedIcon, int date, String name, ArrayList<ItemStack> rewards) {
+    public boolean hidden;
+
+    public Day(Material icon, Material lockedIcon, int date, String name, ArrayList<ItemStack> rewards, boolean hidden) {
         this.icon = icon;
         this.lockedIcon = lockedIcon;
         this.date = date;
         this.name = name;
         this.rewards = rewards;
+        this.hidden = hidden;
     }
 
     public Day(int date) {
-        this(Material.GREEN_SHULKER_BOX, Material.GRAY_SHULKER_BOX, date, "Day " + date, null);
+        this(Material.GREEN_SHULKER_BOX, Material.GRAY_SHULKER_BOX, date, "Day " + date, new ArrayList<>(), false);
     }
 
     public Material getIcon() {
@@ -90,15 +93,34 @@ public class Day implements ConfigurationSerializable {
         this.rewards = rewards;
     }
 
+    public void setReward(int index, ItemStack reward) {
+        this.rewards.set(index, reward);
+    }
+
+    public void addReward(ItemStack reward) {
+        this.rewards.add(reward);
+    }
+
+    public void removeReward(int index) {
+        this.rewards.remove(index);
+    }
+
     public void setRewardsFromHotbar(Player player) {
         ArrayList<ItemStack> rewards = new ArrayList<ItemStack>();
         for (int i = 0; i < 9; i++) {
             if (player.getInventory().getItem(i) != null) {
-                rewards.add(player.getInventory().getItem(i));
+                rewards.add(player.getInventory().getItem(i).clone());
             }
         }
         this.rewards = rewards;
     }
 
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
+    }
 
 }

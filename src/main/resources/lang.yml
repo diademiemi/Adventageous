@@ -12,6 +12,7 @@ titles:
   admin-month-config: "Config: {{ year }}-{{ month }}"
   admin-day-config: "Config: {{ month }}-{{ day }}"
   admin-confirm-create-month: "Confirm: Create {{ year }}-{{ month }}"
+  admin-confirm-set-hotbar: "Confirm: Set items from hotbar"
 buttons:
   # Generic
   discard-changes:
@@ -35,3 +36,11 @@ buttons:
     title: "Configure month {{ month }}"
   admin-configure-day:
     title: "Configure day {{ day }}"
+  admin-day-hidden:
+    title: "Toggle if this day is hidden, currently {{ hidden }}"
+  admin-quick-set-hotbar:
+    title: "Quickly set items from hotbar"
+  admin-empty-slot:
+    title: "Empty slot"
+  admin-explain-rightclick-delete:
+    title: "Right click to delete item"

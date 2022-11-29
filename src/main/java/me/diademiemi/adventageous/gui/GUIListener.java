@@ -13,11 +13,11 @@ public class GUIListener implements Listener {
     public void onClick(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
         GUI gui = GUI.getGUI(player);
-        if (gui != null) {            
+        if (gui != null) {
             if (gui.getButton(e.getRawSlot()) != null) {
                 e.setCancelled(true);
                 if (e.getCursor().getType() != Material.AIR) {
-                    gui.getButton(e.getRawSlot()).onItemDrag(player, e.getCursor().getType());
+                    gui.getButton(e.getRawSlot()).onItemDrag(player, e.getCursor());
                 } else if (e.isLeftClick()) {
                     gui.getButton(e.getRawSlot()).onLeftClick(player);
                 } else if (e.isRightClick()) {
