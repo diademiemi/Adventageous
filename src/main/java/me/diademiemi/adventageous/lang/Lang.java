@@ -1,7 +1,6 @@
 package me.diademiemi.adventageous.lang;
 
 import me.diademiemi.adventageous.Adventageous;
-import me.diademiemi.adventageous.Adventageous;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 

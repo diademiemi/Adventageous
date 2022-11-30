@@ -1,7 +1,6 @@
 package me.diademiemi.adventageous.dialogs;
 
 import me.diademiemi.adventageous.advent.Advent;
-import me.diademiemi.adventageous.advent.Day;
 import me.diademiemi.adventageous.gui.input.Input;
 import org.bukkit.entity.Player;
 

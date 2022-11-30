@@ -1,6 +1,9 @@
 package me.diademiemi.adventageous.dialogs;
 
-import me.diademiemi.adventageous.advent.*;
+import me.diademiemi.adventageous.advent.Advent;
+import me.diademiemi.adventageous.advent.Day;
+import me.diademiemi.adventageous.advent.Days;
+import me.diademiemi.adventageous.advent.Month;
 import me.diademiemi.adventageous.gui.Dialog;
 import me.diademiemi.adventageous.gui.GUIButton;
 import me.diademiemi.adventageous.gui.menu.Menu;
@@ -8,7 +11,6 @@ import me.diademiemi.adventageous.gui.menu.MenuBuilder;
 import me.diademiemi.adventageous.gui.menu.MenuSize;
 import me.diademiemi.adventageous.lang.Button;
 import me.diademiemi.adventageous.lang.Message;
-import me.diademiemi.adventageous.lang.Title;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 

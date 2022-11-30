@@ -1,7 +1,7 @@
 name: Adventageous
 version: '${version}'
 main: me.diademiemi.adventageous.Adventageous
-api-version: 1.19
+api-version: 1.13
 load: STARTUP
 authors: [ diademiemi ]
 description: Minecraft Spigot plugin for advent calendars and daily rewards

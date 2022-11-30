@@ -1,6 +1,8 @@
 package me.diademiemi.adventageous.dialogs;
 
-import me.diademiemi.adventageous.advent.*;
+import me.diademiemi.adventageous.advent.Advent;
+import me.diademiemi.adventageous.advent.Days;
+import me.diademiemi.adventageous.advent.Month;
 import me.diademiemi.adventageous.gui.Dialog;
 import me.diademiemi.adventageous.gui.GUIButton;
 import me.diademiemi.adventageous.gui.menu.Menu;

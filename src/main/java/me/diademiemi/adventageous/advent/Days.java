@@ -1,7 +1,5 @@
 package me.diademiemi.adventageous.advent;
 
-import java.util.HashMap;
-
 public enum Days {
 
     DAY1(1, "1st", 1),
