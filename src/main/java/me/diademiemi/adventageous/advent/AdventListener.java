@@ -28,9 +28,6 @@ public class AdventListener implements Listener {
             return;
         }
         if (player.hasPermission("adventageous.advent")) {
-            System.out.println("Player has permission");
-            System.out.println(player.getUniqueId().toString());
-            System.out.println(dayObj.getPlayersClaimed());
             if (!dayObj.hasPlayerClaimed(player.getUniqueId().toString())) {
                 // Delay message for 80 ticks to ensure player has loaded
                 Adventageous.getPlugin().getServer().getScheduler().runTaskLater(Adventageous.getPlugin(), () -> {
