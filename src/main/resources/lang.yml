@@ -15,6 +15,7 @@ titles:
   admin-month-config: "Config: {{ year }}-{{ month }}"
   admin-day-config: "Config: {{ month }}-{{ day }}"
   admin-confirm-create-month: "Confirm: Create {{ year }}-{{ month }}"
+  admin-confirm-clear-players: "Confirm: Clear {{ year }}-{{ month }}-{{ day }}"
   admin-confirm-set-hotbar: "Confirm: Set items from hotbar"
   month-overview: "Overview: {{ year }}-{{ month }}"
 buttons:
@@ -42,6 +43,9 @@ buttons:
     title: "Configure month {{ month }}"
   admin-configure-day:
     title: "Configure day {{ day }}"
+    lore:
+      - "Click to configure"
+      - "Right click to toggle if day is hidden, currently {{ hidden }}"
   admin-day-hidden:
     title: "Toggle if this day is hidden, currently {{ hidden }}"
   admin-quick-set-hotbar:
@@ -54,12 +58,41 @@ buttons:
     title: "Right click to delete item"
   admin-configure-advents:
     title: "Configure advents"
+  admin-day-locked-icon:
+    title: "Current icon for locked days"
+    lore:
+      - "This is the icon in the menu when the day can not be claimed"
+      - "Inherited from month: {{ default }}"
+  admin-day-claimed-icon:
+    title: "Current icon for claimed days"
+    lore:
+      - "This is the icon in the menu when the day has been claimed"
+      - "This is automatically set to the first item in the rewards"
+  admin-set-default-locked-icon:
+    title: "Set default locked icon"
+    lore:
+      - "Set the default locked icon for this month by dragging an item"
+  admin-day-clear-players:
+    title: "Clear players"
+    lore:
+      - "Clear the list of players who have claimed this day"
+  admin-notice-clear-players:
+    title: "This will allow everyone to claim this day again"
+  admin-clear-me:
+    title: "Only clear yourself"
+    lore:
+      - "Clear your own claim for this day"
+  admin-day-set-custom-name:
+    title: "Set custom name"
+    lore:
+      - "Set a custom name for this day"
+      - "Current name: {{ name }}"
   # Player
   claim-day:
-    title: "Claim day {{ day }}"
+    title: "Claim {{ day }}"
   already-claimed:
-    title: "Already claimed day {{ day }}"
+    title: "{{ day }}"
   locked-day:
-    title: "Day {{ day }}"
+    title: "{{ day }}"
   claim-items:
     title: "Claim items"

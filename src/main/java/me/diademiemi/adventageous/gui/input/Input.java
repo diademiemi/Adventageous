@@ -8,17 +8,18 @@ import java.util.HashMap;
 public abstract class Input {
     public static HashMap<Player, Input> inputs = new HashMap<Player, Input>();
     public Player player;
+    public Object[] args;
     public String preamble;
 
     public Input(Player player, Object... args) {
         this.player = player;
+        this.args = args;
         addInput(this);
     }
 
     public Input(Player player, String preamble, Object... args) {
-        this.player = player;
+        this(player, args);
         Message.send(player, preamble);
-        addInput(this);
     }
 
     public static HashMap<Player, Input> getInputs() {

@@ -54,7 +54,7 @@ public class Day implements ConfigurationSerializable {
     }
 
     public Day(int date) {
-        this(Material.GREEN_SHULKER_BOX, Material.GRAY_SHULKER_BOX, date, "Day " + date, new ArrayList<>(), false, new ArrayList<>());
+        this(Material.GREEN_SHULKER_BOX, null, date, "Day " + date, new ArrayList<>(), false, new ArrayList<>());
     }
 
     public Material getClaimedIcon() {
@@ -138,6 +138,10 @@ public class Day implements ConfigurationSerializable {
         this.hidden = hidden;
     }
 
+    public void toggleHidden() {
+        this.hidden = !this.hidden;
+    }
+
     public ArrayList<UUID> getPlayersClaimed() {
         return playersClaimed;
     }
@@ -166,11 +170,12 @@ public class Day implements ConfigurationSerializable {
         }
         // Check if player has enough space in inventory
         int emptySlots = 0;
-        for (int slot = 0; slot < player.getInventory().getSize(); slot++) {
+        for (int slot = 0; slot < 36; slot++) {
             if (player.getInventory().getItem(slot) == null || player.getInventory().getItem(slot).getType() == Material.AIR) {
                 emptySlots++;
             }
         }
+        System.out.println("Empty slots: " + emptySlots + "  rewards: " + rewards.size());
         if (emptySlots < rewards.size()) {
             Message.send(player, "not-enough-space");
             return;

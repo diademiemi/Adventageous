@@ -23,11 +23,12 @@ public class ClaimDay implements Dialog {
         int month = (int) args[1];
         int day = (int) args[2];
 
-        MenuBuilder builder = new MenuBuilder(Title.get("admin-day-config", "month", Integer.toString(month), "day", Integer.toString(day)));
-        builder.setSize(MenuSize.TWO_ROWS);
-        builder.addButton(new GUIButton(), 9, 10, 12, 13, 14, 16, 17);
-
         Day dayObj = Advent.getYear(year).getMonth(month - 1).getDay(day - 1);
+
+        MenuBuilder builder = new MenuBuilder(dayObj.getName());
+        builder.setSize(MenuSize.TWO_ROWS);
+        builder.addButton(new GUIButton(), 9, 10, 11, 13, 15, 16, 17);
+
 
         for (int i = 0; i < 9; i++) {
 
@@ -43,7 +44,7 @@ public class ClaimDay implements Dialog {
             public void onLeftClick(Player p) {
                 new MonthOverview().show(p, year, month, day);
             }
-        }, 11);
+        }, 12);
 
         builder.addButton(new GUIButton(Material.CHEST, 1, Button.get("claim-items")) {
             @Override
@@ -51,7 +52,7 @@ public class ClaimDay implements Dialog {
                 dayObj.claim(p);
                 new MonthOverview().show(p, year, month, day);
             }
-        }, 15);
+        }, 14);
 
         return builder.build(p);
     }

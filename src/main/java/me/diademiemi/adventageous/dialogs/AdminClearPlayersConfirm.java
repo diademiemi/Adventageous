@@ -14,8 +14,11 @@ import me.diademiemi.adventageous.lang.Button;
 import me.diademiemi.adventageous.lang.Title;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.checkerframework.checker.units.qual.A;
 
-public class AdminSetFromHotbarConfirm implements Dialog {
+import java.util.ArrayList;
+
+public class AdminClearPlayersConfirm implements Dialog {
 
     @Override
     public Menu create(Player p, Object... args) {
@@ -25,30 +28,34 @@ public class AdminSetFromHotbarConfirm implements Dialog {
 
         Day dayObj = Advent.getYear(year).getMonth(month - 1).getDay(day - 1);
 
-        MenuBuilder builder = new MenuBuilder(Title.get("admin-confirm-set-hotbar"));
-        builder.setSize(MenuSize.TWO_ROWS);
-        builder.addButton(new GUIButton(), 9, 10, 11, 13, 15, 16, 17);
+        MenuBuilder builder = new MenuBuilder(Title.get("admin-confirm-clear-players", "year", Integer.toString(year), "month", Integer.toString(month), "day", Integer.toString(day)));
+        builder.setSize(MenuSize.HALF_ROW);
+        builder.addButton(new GUIButton(), 0);
 
-        for (int i = 0; i < 9; i++) {
-            if (p.getInventory().getItem(i) != null) {
-                builder.addButton(new GUIButton(p.getInventory().getItem(i)), i);
-            }
-        }
-
-        builder.addButton(new GUIButton(Material.RED_SHULKER_BOX, 1, Button.get("admin-cancel")) {
+        builder.addButton(new GUIButton(Material.RED_STAINED_GLASS, 1, Button.get("admin-cancel")) {
             @Override
             public void onLeftClick(Player p) {
                 new AdminModifyDay().show(p, year, month, day);
             }
-        }, 12);
+        }, 1);
 
-        builder.addButton(new GUIButton(Material.LIME_SHULKER_BOX, 1, Button.get("admin-confirm")) {
+        builder.addButton(new GUIButton(Material.PAPER, 1, Button.get("admin-notice-clear-players")), 2);
+
+        builder.addButton(new GUIButton(Material.LIME_STAINED_GLASS, 1, Button.get("admin-confirm")) {
             @Override
             public void onLeftClick(Player p) {
-                dayObj.setRewardsFromHotbar(p);
+                dayObj.setPlayersClaimed(new ArrayList<>());
                 new AdminModifyDay().show(p, year, month, day);
             }
-        }, 14);
+        }, 3);
+
+        builder.addButton(new GUIButton(Material.YELLOW_STAINED_GLASS, 1, Button.get("admin-clear-me")) {
+            @Override
+            public void onLeftClick(Player p) {
+                dayObj.removePlayerClaimed(p.getUniqueId());
+                new AdminModifyDay().show(p, year, month, day);
+            }
+        }, 4);
 
         return builder.build(p);
     }

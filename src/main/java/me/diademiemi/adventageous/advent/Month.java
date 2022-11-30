@@ -1,5 +1,6 @@
 package me.diademiemi.adventageous.advent;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import java.util.*;
@@ -27,6 +28,8 @@ public class Month implements ConfigurationSerializable {
 
     public String name;
 
+    public Material defaultLockedIcon;
+
     public Month(int year, int month) {
         // Populate days with how many days are in the month
 
@@ -51,12 +54,14 @@ public class Month implements ConfigurationSerializable {
             days.put(i , new Day(i + 1));
         }
         this.name = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+        this.defaultLockedIcon = Material.GRAY_SHULKER_BOX;
     }
 
-    public Month(int month, HashMap<Integer, Day> days, String name) {
+    public Month(int month, HashMap<Integer, Day> days, String name, Material defaultLockedIcon) {
         this.number = month;
         this.days = days;
         this.name = name;
+        this.defaultLockedIcon = defaultLockedIcon;
     }
 
     public Day getDay(int day) {
@@ -71,6 +76,10 @@ public class Month implements ConfigurationSerializable {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getNumber() {
         return number;
     }
@@ -81,6 +90,14 @@ public class Month implements ConfigurationSerializable {
 
     public HashMap<Integer, Day> getDays() {
         return days;
+    }
+
+    public Material getDefaultLockedIcon() {
+        return defaultLockedIcon;
+    }
+
+    public void setDefaultLockedIcon(Material defaultLockedIcon) {
+        this.defaultLockedIcon = defaultLockedIcon;
     }
 
 
