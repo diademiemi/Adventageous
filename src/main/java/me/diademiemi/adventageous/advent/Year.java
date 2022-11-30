@@ -27,10 +27,10 @@ public class Year implements ConfigurationSerializable {
     public Year(int year) {
         this(year, null);
 
-        months = new ArrayList<Month>(12);
+        this.months = new ArrayList<Month>(12);
 
         for (int i = 0; i < 12; i++) {
-            months.set(i, null);
+            this.months.add(null);
         }
     }
     public Year(int year, ArrayList<Month> months) {

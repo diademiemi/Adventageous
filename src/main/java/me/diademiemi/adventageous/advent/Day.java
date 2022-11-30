@@ -197,7 +197,6 @@ public class Day implements ConfigurationSerializable {
                 emptySlots++;
             }
         }
-        System.out.println("Empty slots: " + emptySlots + "  rewards: " + rewards.size());
         if (emptySlots < rewards.size()) {
             Message.send(player, "not-enough-space");
             return;
