@@ -9,6 +9,7 @@ messages:
   already-claimed: "&4You have already claimed this reward."
   not-enough-space: "&4You don't have enough space in your inventory."
   no-active-month: "&4There is no active advent calendar."
+  join-today-available: "&a&lToday's reward is available! &r&aType &4/advent &ato claim it."
 titles:
   admin-main-menu: "Admin Menu"
   admin-year-config: "Config: {{ year }}"

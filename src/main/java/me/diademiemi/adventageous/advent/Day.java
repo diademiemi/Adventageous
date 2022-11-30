@@ -49,7 +49,7 @@ public class Day implements ConfigurationSerializable {
         name = (String) map.get("name");
         rewards = (ArrayList<ItemStack>) map.get("rewards");
         hidden = (boolean) map.get("hidden");
-        playersClaimed = (ArrayList<UUID>) map.get("playersClaimed");
+        playersClaimed = (ArrayList<String>) map.get("playersClaimed");
     }
 
     public Material claimedIcon;
@@ -64,9 +64,9 @@ public class Day implements ConfigurationSerializable {
 
     public boolean hidden;
 
-    public ArrayList<UUID> playersClaimed;
+    public ArrayList<String> playersClaimed;
 
-    public Day(Material claimedIcon, Material lockedIcon, int date, String name, ArrayList<ItemStack> rewards, boolean hidden, ArrayList<UUID> playersClaimed) {
+    public Day(Material claimedIcon, Material lockedIcon, int date, String name, ArrayList<ItemStack> rewards, boolean hidden, ArrayList<String> playersClaimed) {
         this.claimedIcon = claimedIcon;
         this.lockedIcon = lockedIcon;
         this.date = date;
@@ -164,29 +164,29 @@ public class Day implements ConfigurationSerializable {
         this.hidden = !this.hidden;
     }
 
-    public ArrayList<UUID> getPlayersClaimed() {
+    public ArrayList<String> getPlayersClaimed() {
         return playersClaimed;
     }
 
-    public void setPlayersClaimed(ArrayList<UUID> playersClaimed) {
+    public void setPlayersClaimed(ArrayList<String> playersClaimed) {
         this.playersClaimed = playersClaimed;
     }
 
-    public void addPlayerClaimed(UUID player) {
+    public void addPlayerClaimed(String player) {
         this.playersClaimed.add(player);
     }
 
-    public void removePlayerClaimed(UUID player) {
+    public void removePlayerClaimed(String player) {
         this.playersClaimed.remove(player);
     }
 
-    public boolean hasPlayerClaimed(UUID player) {
+    public boolean hasPlayerClaimed(String player) {
         return this.playersClaimed.contains(player);
     }
 
     public void claim(Player player) {
         // Check if player has already claimed
-        if (hasPlayerClaimed(player.getUniqueId())) {
+        if (hasPlayerClaimed(player.getUniqueId().toString())) {
             Message.send(player, "already-claimed");
             return;
         }
@@ -204,7 +204,7 @@ public class Day implements ConfigurationSerializable {
         }
 
         // Give player rewards
-        playersClaimed.add(player.getUniqueId());
+        playersClaimed.add(player.getUniqueId().toString());
         for (ItemStack reward : rewards) {
             player.getInventory().addItem(reward);
         }

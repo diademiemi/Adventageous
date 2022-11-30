@@ -1,5 +1,6 @@
 package me.diademiemi.adventageous;
 
+import me.diademiemi.adventageous.advent.AdventListener;
 import me.diademiemi.adventageous.advent.Day;
 import me.diademiemi.adventageous.advent.Month;
 import me.diademiemi.adventageous.advent.Year;
@@ -50,6 +51,7 @@ public final class Adventageous extends JavaPlugin {
 
         pm.registerEvents(new GUIListener(), this);
         pm.registerEvents(new InputListener(), this);
+        pm.registerEvents(new AdventListener(), this);
 
         getCommand("adventageous").setExecutor(new CommandHandler());
         getCommand("advent").setExecutor(new CommandHandler());

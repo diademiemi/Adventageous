@@ -43,7 +43,7 @@ public class MonthOverview implements Dialog {
             if (d.getNumber() <= maxDays) {
                 if (monthObj.getDay(d.getNumber() - 1) != null && !monthObj.getDay(d.getNumber() - 1).isHidden() && !monthObj.getDay(d.getNumber() - 1).getRewards().isEmpty()) {
                     Day dayObj = monthObj.getDay(d.getNumber() - 1);
-                    if (dayObj.hasPlayerClaimed(p.getUniqueId())) {
+                    if (dayObj.hasPlayerClaimed(p.getUniqueId().toString())) {
                         builder.addButton(new GUIButton(dayObj.getClaimedIcon(), 1, Button.get("already-claimed", "day", dayObj.getName())), d.getSlot());
                     } else if (day != d.getNumber()) {
                         Material lockedIcon = dayObj.getLockedIcon();

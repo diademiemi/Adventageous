@@ -52,7 +52,7 @@ public class AdminClearPlayersConfirm implements Dialog {
         builder.addButton(new GUIButton(Material.YELLOW_STAINED_GLASS, 1, Button.get("admin-clear-me")) {
             @Override
             public void onLeftClick(Player p) {
-                dayObj.removePlayerClaimed(p.getUniqueId());
+                dayObj.removePlayerClaimed(p.getUniqueId().toString());
                 new AdminModifyDay().show(p, year, month, day);
             }
         }, 4);
