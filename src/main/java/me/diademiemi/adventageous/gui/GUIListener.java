@@ -14,7 +14,7 @@ public class GUIListener implements Listener {
         Player player = (Player) e.getWhoClicked();
         GUI gui = GUI.getGUI(player);
         if (gui != null) {
-            e.setCancelled(true);
+            if (e.getClickedInventory() == gui.getInventory()) e.setCancelled(true);
             if (gui.getButton(e.getRawSlot()) != null) {
                 if (e.getCursor().getType() != Material.AIR) {
                     gui.getButton(e.getRawSlot()).onItemDrag(player, e.getCursor());
