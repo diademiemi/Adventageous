@@ -10,16 +10,19 @@ public class Month implements ConfigurationSerializable {
     @Override
     public Map<String, Object> serialize() {
         Map map = new HashMap();
-
-        map.put("days" , days);
+        map.put("days", days);
+        map.put("number", number);
         map.put("name", name);
+        map.put("defaultLockedIcon", defaultLockedIcon.name());
 
         return map;
     }
 
     public Month(Map<String, Object> map) {
         days = (HashMap<Integer, Day>) map.get("days");
+        number = (int) map.get("number");
         name = (String) map.get("name");
+        defaultLockedIcon = (Material) Material.valueOf(map.get("defaultLockedIcon").toString());
     }
 
     public HashMap<Integer, Day> days;

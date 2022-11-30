@@ -29,6 +29,13 @@ public class AdminModifyYear implements Dialog {
             }
         }, 47);
 
+        builder.addButton(new GUIButton(Material.YELLOW_STAINED_GLASS_PANE, 1, Button.get("return-previous")) {
+            @Override
+            public void onLeftClick(Player p) {
+                new AdminMenu().show(p);
+            }
+        }, 49);
+
         builder.addButton(new GUIButton(Material.GREEN_STAINED_GLASS_PANE, 1, Button.get("next-page")) {
             @Override
             public void onLeftClick(Player p) {

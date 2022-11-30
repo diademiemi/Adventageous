@@ -2,6 +2,7 @@ package me.diademiemi.adventageous;
 
 import me.diademiemi.adventageous.advent.Day;
 import me.diademiemi.adventageous.advent.Month;
+import me.diademiemi.adventageous.advent.Year;
 import me.diademiemi.adventageous.command.CommandHandler;
 import me.diademiemi.adventageous.gui.GUIListener;
 import me.diademiemi.adventageous.gui.input.InputListener;
@@ -15,6 +16,7 @@ public final class Adventageous extends JavaPlugin {
     static {
         ConfigurationSerialization.registerClass(Day.class);
         ConfigurationSerialization.registerClass(Month.class);
+        ConfigurationSerialization.registerClass(Year.class);
     }
 
     public static Adventageous plugin;
@@ -39,6 +41,8 @@ public final class Adventageous extends JavaPlugin {
         Lang.init();
         Lang.loadConfig();
 
+        AdventIO.init();
+        AdventIO.loadConfig();
 
         for (String permission : permissions) {
             pm.addPermission(new org.bukkit.permissions.Permission(pluginName.toLowerCase() + "." + permission));
@@ -53,6 +57,8 @@ public final class Adventageous extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        AdventIO.writeConfig();
+        plugin = null;
         // Plugin shutdown logic
     }
 

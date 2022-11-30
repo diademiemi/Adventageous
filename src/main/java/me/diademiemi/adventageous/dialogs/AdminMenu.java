@@ -1,5 +1,6 @@
 package me.diademiemi.adventageous.dialogs;
 
+import me.diademiemi.adventageous.AdventIO;
 import me.diademiemi.adventageous.gui.Dialog;
 import me.diademiemi.adventageous.gui.GUIButton;
 import me.diademiemi.adventageous.gui.menu.Menu;
@@ -25,6 +26,13 @@ public class AdminMenu implements Dialog {
                 new AdminModifyYear().show(p, date.getYear());
             }
         }, 4);
+
+        builder.addButton(new GUIButton(Material.WRITABLE_BOOK, 1, Button.get("admin-write-data")) {
+            @Override
+            public void onLeftClick(Player p) {
+                AdventIO.writeConfig();
+            }
+        }, 6);
 
         return builder.build(p);
     }

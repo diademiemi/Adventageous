@@ -70,4 +70,8 @@ public abstract class GUI {
         }
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
 }

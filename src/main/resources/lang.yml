@@ -37,6 +37,8 @@ buttons:
     title: "Confirm"
   admin-cancel:
     title: "Cancel"
+  admin-write-data:
+    title: "Write data to file"
   admin-create-month:
     title: "Create month {{ month }}"
   admin-configure-month:

@@ -14,19 +14,42 @@ public class Day implements ConfigurationSerializable {
     public Map<String, Object> serialize() {
         Map map = new HashMap();
 
-        map.put("icon" , claimedIcon);
+        if (claimedIcon != null) {
+            map.put("claimedIcon", claimedIcon.name());
+        } else {
+            map.put("claimedIcon", null);
+        }
+
+        if (lockedIcon != null) {
+            map.put("lockedIcon", lockedIcon.name());
+        } else {
+            map.put("lockedIcon", null);
+        }
         map.put("date", date);
         map.put("name", name);
         map.put("rewards", rewards);
+        map.put("hidden", hidden);
+        map.put("playersClaimed", playersClaimed);
 
         return map;
     }
 
     public Day (Map<String, Object> map) {
-        claimedIcon = (Material) map.get("icon");
+        if (map.get("claimedIcon") != null) {
+            claimedIcon = (Material) Material.valueOf(map.get("claimedIcon").toString());
+        } else {
+            claimedIcon = null;
+        }
+        if (map.get("lockedIcon") != null) {
+            lockedIcon = (Material) Material.valueOf(map.get("lockedIcon").toString());
+        } else {
+            lockedIcon = null;
+        }
         date = (int) map.get("date");
         name = (String) map.get("name");
         rewards = (ArrayList<ItemStack>) map.get("rewards");
+        hidden = (boolean) map.get("hidden");
+        playersClaimed = (ArrayList<UUID>) map.get("playersClaimed");
     }
 
     public Material claimedIcon;
@@ -66,7 +89,6 @@ public class Day implements ConfigurationSerializable {
             claimedIcon = rewards.get(0).getType();
         }
     }
-
 
     public void setClaimedIcon(Material claimedIcon) {
         this.claimedIcon = claimedIcon;
