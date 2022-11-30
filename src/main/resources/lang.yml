@@ -6,6 +6,9 @@ messages:
   unknown-arguments: "&cUnknown arguments. Type &4/{{ label }} help &cfor help."
   changes-committed: "&aYour changes have been committed."
   config-saved-to-disk: "&aThe configuration has been saved to disk."
+  already-claimed: "&4You have already claimed this reward."
+  not-enough-space: "&4You don't have enough space in your inventory."
+  no-active-month: "&4There is no active advent calendar."
 titles:
   admin-main-menu: "Admin Menu"
   admin-year-config: "Config: {{ year }}"
@@ -13,6 +16,7 @@ titles:
   admin-day-config: "Config: {{ month }}-{{ day }}"
   admin-confirm-create-month: "Confirm: Create {{ year }}-{{ month }}"
   admin-confirm-set-hotbar: "Confirm: Set items from hotbar"
+  month-overview: "Overview: {{ year }}-{{ month }}"
 buttons:
   # Generic
   discard-changes:
@@ -25,6 +29,8 @@ buttons:
     title: "Next page"
   return-previous:
     title: "Return to previous menu"
+  close:
+    title: "Close"
   # Admin
   admin-confirm:
     title: "Confirm"
@@ -42,5 +48,18 @@ buttons:
     title: "Quickly set items from hotbar"
   admin-empty-slot:
     title: "Empty slot"
+  admin-open-month-as-day:
+    title: "Open advent calendar as date {{ year }}-{{ month }}-{{ day }}"
   admin-explain-rightclick-delete:
     title: "Right click to delete item"
+  admin-configure-advents:
+    title: "Configure advents"
+  # Player
+  claim-day:
+    title: "Claim day {{ day }}"
+  already-claimed:
+    title: "Already claimed day {{ day }}"
+  locked-day:
+    title: "Day {{ day }}"
+  claim-items:
+    title: "Claim items"

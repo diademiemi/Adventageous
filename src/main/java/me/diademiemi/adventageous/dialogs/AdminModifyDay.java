@@ -25,7 +25,7 @@ public class AdminModifyDay implements Dialog {
 
         MenuBuilder builder = new MenuBuilder(Title.get("admin-day-config", "month", Integer.toString(month), "day", Integer.toString(day)));
         builder.setSize(MenuSize.TWO_ROWS);
-        builder.addButton(new GUIButton(), 9, 10, 12, 14, 16);
+        builder.addButton(new GUIButton(), 10, 12, 14, 16);
 
         Day dayObj = Advent.getYear(year).getMonth(month - 1).getDay(day - 1);
 
@@ -93,7 +93,13 @@ public class AdminModifyDay implements Dialog {
             }, 15);
         }
 
-        builder.addButton(new GUIButton(Material.PAPER, 1, Button.get("admin-explain-rightclick-delete")), 17);
+        builder.addButton(new GUIButton(Material.CLOCK, day, Button.get("admin-open-month-as-day", "year", Integer.toString(year), "month", Integer.toString(month), "day", Integer.toString(day))) {
+            @Override
+            public void onLeftClick(Player p) {
+                new MonthOverview().show(p, year, month, day);
+            }
+        }, 9);
+        builder.addButton(new GUIButton(Material.CLOCK, 1, Button.get("admin-explain-rightclick-delete")), 17);
 
         return builder.build(p);
     }

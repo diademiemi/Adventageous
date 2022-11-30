@@ -36,7 +36,7 @@ public class AdminModifyMonth implements Dialog {
         for (Days d : Days.values()) {
             if (d.getNumber() <= maxDays) {
                 if (monthObj.getDay(d.getNumber() - 1) != null) {
-                    builder.addButton(new GUIButton(monthObj.getDay(d.getNumber() - 1).getIcon(), 1, Button.get("admin-configure-day", "day", Integer.toString(d.getNumber()))) {
+                    builder.addButton(new GUIButton(monthObj.getDay(d.getNumber() - 1).getClaimedIcon(), 1, Button.get("admin-configure-day", "day", Integer.toString(d.getNumber()))) {
                         @Override
                         public void onLeftClick(Player p) {
                             new AdminModifyDay().show(p, year, month, d.getNumber());

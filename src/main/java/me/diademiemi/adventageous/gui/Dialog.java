@@ -10,7 +10,11 @@ public interface Dialog {
         } catch (NullPointerException e) {
             // Do nothing
         }
-        create(player, args).open();
+
+        Menu menu = create(player, args);
+        if (menu != null) {
+            menu.open(); // Sometimes it is intended to return null
+        }
     }
 
     default void close(Player player) {

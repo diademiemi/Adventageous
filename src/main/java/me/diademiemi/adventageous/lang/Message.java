@@ -14,7 +14,7 @@ public class Message {
     }
 
     public static void send(CommandSender p, String key, String... replacements) {
-        send(p, key, true, replacements);
+        send(p, key, false, replacements);
     }
 
 }
