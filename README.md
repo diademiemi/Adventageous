@@ -4,6 +4,9 @@
 
 Adventageous is a Spigot plugin that allows you to create advent calendars for your server. Despite it's name, this plugin can be used to create calendars for any month, not just the Christmas season. It's perfect for daily rewards, or for creating fun rewards leading up to server events!  
 
+## Compatibility
+This plugin is tested on Spigot 1.13.2 and Paper 1.19.2, I expect it to work on any version of Spigot or Paper 1.13.2 and above.
+
 ## Features
 - Create advent calendars for any month!
 - You can use any amount of days in your calendar, not just 24!
