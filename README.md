@@ -2,7 +2,7 @@
 
 # Adventageous
 
-Adventageous is a Spigot plugin that allows you to create advent calendars for your server. Despite it's name, this plugin can be used to create calendars for any month, not just the Christmas season. It's perfect for daily rewards, or for creating fun rewards leading up to server events!  
+Adventageous is a Spigot plugin that allows you to create advent calendars for your server. Despite its name, this plugin can be used to create calendars for any month, not just the Christmas season. It's perfect for daily rewards, or for creating fun rewards leading up to server events!  
 
 ## Showcase
 ![Showcase](img/showcase.gif)  
@@ -23,10 +23,12 @@ This plugin is tested on Spigot 1.13.2 and Paper 1.19.2, I expect it to work on 
 ### Permissions
 - `adventageous.admin` - Allows the player to use the admin UI.  
 - `adventageous.advent` - Allows the player to open the active calendar.  
+- `adventageous.advent.claim` - Allow using `/advent claim` to claim the current day.
 
 ### Commands
 - `/adventageous` - Opens the admin UI.  
 - `/advent` - Opens the active calendar.  
+- `/advent claim` - Claims todays reward without UI.  
 
 ### Configuration
 All configuration is done through the admin UI, please do not edit any of the plugins files manually!  
