@@ -11,6 +11,7 @@ import me.diademiemi.adventageous.lang.Button;
 import me.diademiemi.adventageous.lang.Title;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.time.LocalDate;
 
@@ -20,15 +21,34 @@ public class AdminMenu implements Dialog {
     public Menu create(Player p, Object... args) {
         MenuBuilder builder = new MenuBuilder(Title.get("admin-main-menu"));
         builder.setSize(MenuSize.ONE_ROW);
-        builder.addButton(new GUIButton(Material.CLOCK, 1, Button.get("admin-configure-offset", "offset", Advent.getOffset())) {
+
+        builder.addButton(new GUIButton(Advent.getAvailableIcon(), 1, Button.get("admin-set-available-icon")) {
+            LocalDate date = LocalDate.now();
+            @Override
+            public void onItemDrag(Player p, ItemStack is) {
+                Advent.setAvailableIcon(is.getType());
+                new AdminMenu().show(p);
+            }
+        }, 0);
+
+        builder.addButton(new GUIButton(Material.NOTE_BLOCK, 1, Button.get("admin-configure-sound", "sound", Advent.getClaimSound())) {
             @Override
             public void onLeftClick(Player p) {
                 close(p);
-                new AdminIptSetOffset(p);
+                new AdminIptSetSound(p);
+            }
+        }, 1);
+
+        builder.addButton(new GUIButton(Material.GLOWSTONE_DUST, 1, Button.get("admin-configure-particle", "particle", Advent.getClaimParticle())) {
+            @Override
+            public void onLeftClick(Player p) {
+                close(p);
+                new AdminIptSetParticle(p);
             }
         }, 2);
 
-        builder.addButton(new GUIButton(Material.LIME_SHULKER_BOX, 1, Button.get("admin-configure-advents")) {
+
+        builder.addButton(new GUIButton(Material.YELLOW_SHULKER_BOX, 1, Button.get("admin-configure-advents")) {
             LocalDate date = LocalDate.now();
             @Override
             public void onLeftClick(Player p) {
@@ -36,12 +56,20 @@ public class AdminMenu implements Dialog {
             }
         }, 4);
 
+        builder.addButton(new GUIButton(Material.CLOCK, 1, Button.get("admin-configure-offset", "offset", Advent.getOffset())) {
+            @Override
+            public void onLeftClick(Player p) {
+                close(p);
+                new AdminIptSetOffset(p);
+            }
+        }, 6);
+
         builder.addButton(new GUIButton(Material.WRITABLE_BOOK, 1, Button.get("admin-write-data")) {
             @Override
             public void onLeftClick(Player p) {
                 AdventIO.writeConfig();
             }
-        }, 6);
+        }, 7);
 
         return builder.build(p);
     }

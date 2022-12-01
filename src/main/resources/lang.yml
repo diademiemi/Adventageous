@@ -15,6 +15,12 @@ messages:
   admin-enter-offset: "&aEnter the time offset as +/- an amount of minutes. Example: -30"
   admin-offset-set: "&aThe time offset has been set to &4{{ offset }}&a minutes."
   admin-invalid-offset: "&cInvalid offset entered. Example: -30"
+  admin-enter-particle: "&aEnter the particle name. Example: &4flame. Enter NONE to disable."
+  admin-particle-set: "&aThe particle has been set to &4{{ particle }}&a."
+  admin-invalid-particle: "&cInvalid particle entered. Example: &4flame"
+  admin-enter-sound: "&aEnter the sound name. Example: &4block.ender_chest.open. Enter NONE to disable."
+  admin-sound-set: "&aThe sound has been set to &4{{ sound }}&a."
+  admin-invalid-sound: "&cInvalid sound entered. Example: &4block.ender_chest.open"
 titles:
   admin-main-menu: "Admin Menu"
   admin-year-config: "Config: {{ year }}"
@@ -76,6 +82,11 @@ buttons:
     lore:
       - "This is the icon in the menu when the day has been claimed"
       - "This is automatically set to the first item in the rewards"
+  admin-set-available-icon:
+    title: "Set the icon for days players haven't claimed yet"
+    lore:
+      - "Drag an item here to set it as the icon"
+      - "This is the icon in the menu when the day can be claimed"
   admin-set-default-locked-icon:
     title: "Set default locked icon"
     lore:
@@ -100,6 +111,16 @@ buttons:
     lore:
       - "Set the time offset in minutes"
       - "Current offset: {{ offset }}"
+  admin-configure-sound:
+    title: "Configure sound"
+    lore:
+      - "Set the sound to play when a player claims a reward"
+      - "Current sound: {{ sound }}"
+  admin-configure-particle:
+    title: "Configure particle"
+    lore:
+      - "Set the particle to play when a player claims a reward"
+      - "Current particle: {{ particle }}"
   # Player
   claim-day:
     title: "Claim {{ day }}"

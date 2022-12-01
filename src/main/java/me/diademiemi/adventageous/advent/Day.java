@@ -2,6 +2,8 @@ package me.diademiemi.adventageous.advent;
 
 import me.diademiemi.adventageous.lang.Message;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -210,6 +212,26 @@ public class Day implements ConfigurationSerializable {
         for (ItemStack reward : rewards) {
             player.getInventory().addItem(reward);
         }
+
+        // Play sound
+        try {
+            if (Advent.getClaimSound() != "NONE" && Sound.valueOf(Advent.getClaimSound()) != null) {
+                player.playSound(player.getLocation(), Sound.valueOf(Advent.getClaimSound()), 1, 1);
+            }
+        } catch (Exception e) {
+            // Do nothing
+        }
+
+        // Show particles
+        try {
+            if (Advent.getClaimParticle() != "NONE" && Particle.valueOf(Advent.getClaimParticle()) != null) {
+                player.spawnParticle(Particle.valueOf(Advent.getClaimParticle()), player.getLocation().add(0, 1, 0), 100, 0.5, 0.5, 0.5);
+            }
+        } catch (Exception e) {
+            // Do nothing
+        }
+
+
         return true;
 
     }

@@ -1,6 +1,8 @@
 package me.diademiemi.adventageous.advent;
 
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -13,6 +15,10 @@ public class Advent {
     public static String offset = "+0";
 
     public static Material availableIcon = Material.LIME_SHULKER_BOX;
+
+    public static String claimSound = "ENTITY_PLAYER_LEVELUP";
+
+    public static String claimParticle = "VILLAGER_HAPPY";
 
     public static void addYear(Year year) {
         years.put(year.getYear(), year);
@@ -73,5 +79,37 @@ public class Advent {
     public static void setAvailableIcon(Material availableIcon) {
         Advent.availableIcon = availableIcon;
     }
+
+    public static String getClaimSound() {
+        return claimSound;
+    }
+
+    public static boolean setClaimSound(String claimSound) {
+        claimSound = claimSound.toUpperCase().stripLeading().stripTrailing();
+        claimSound = claimSound.replace(".", "_");
+        try {
+            Sound.valueOf(claimSound);
+            Advent.claimSound = claimSound;
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static String getClaimParticle() {
+        return claimParticle;
+    }
+
+    public static boolean setClaimParticle(String claimParticle) {
+        claimParticle = claimParticle.toUpperCase().stripLeading().stripTrailing();
+        try {
+            Particle.valueOf(claimParticle);
+            Advent.claimParticle = claimParticle;
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
 }

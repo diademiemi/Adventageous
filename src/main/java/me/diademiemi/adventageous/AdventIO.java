@@ -26,6 +26,8 @@ public class AdventIO {
         data.set("availableIcon", Advent.getAvailableIcon().name());
         data.set("initialised", true);
         data.set("offset", Advent.getOffset());
+        data.set("claimSound", Advent.getClaimSound());
+        data.set("claimParticle", Advent.getClaimParticle());
         try {
             data.save(dataFile);
         } catch (Exception e) {
@@ -43,6 +45,12 @@ public class AdventIO {
                 }
                 if (data.getString("offset") != null) {
                     Advent.setOffset(data.getString("offset"));
+                }
+                if (data.getString("claimSound") != null) {
+                    Advent.setClaimSound(data.getString("claimSound"));
+                }
+                if (data.getString("claimParticle") != null) {
+                    Advent.setClaimParticle(data.getString("claimParticle"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
