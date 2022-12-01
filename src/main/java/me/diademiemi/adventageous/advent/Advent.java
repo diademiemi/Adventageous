@@ -85,6 +85,11 @@ public class Advent {
     }
 
     public static boolean setClaimSound(String claimSound) {
+        if (claimSound.stripLeading().stripTrailing().equalsIgnoreCase("NONE")) {
+            Advent.claimSound = "NONE";
+            return true;
+        }
+
         claimSound = claimSound.toUpperCase().stripLeading().stripTrailing();
         claimSound = claimSound.replace(".", "_");
         try {
@@ -101,6 +106,10 @@ public class Advent {
     }
 
     public static boolean setClaimParticle(String claimParticle) {
+        if (claimParticle.stripLeading().stripTrailing().equalsIgnoreCase("NONE")) {
+            Advent.claimParticle = "NONE";
+            return true;
+        }
         claimParticle = claimParticle.toUpperCase().stripLeading().stripTrailing();
         try {
             Particle.valueOf(claimParticle);
