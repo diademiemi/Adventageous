@@ -35,7 +35,7 @@ public class ClaimDay implements Dialog {
                     @Override
                     public void onLeftClick(Player p) {
                         dayObj.claim(p);
-                        new MonthOverview().show(p, year, month, day);
+                        close(p);
                     }
                 }, i);
             }
@@ -52,7 +52,7 @@ public class ClaimDay implements Dialog {
             @Override
             public void onLeftClick(Player p) {
                 dayObj.claim(p);
-                new MonthOverview().show(p, year, month, day);
+                close(p);
             }
         }, 14);
 

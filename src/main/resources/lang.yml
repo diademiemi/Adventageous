@@ -103,6 +103,9 @@ buttons:
   # Player
   claim-day:
     title: "Claim {{ day }}"
+    lore:
+      - "Click to claim"
+      - "Right click to preview items"
   already-claimed:
     title: "{{ day }}"
   locked-day:

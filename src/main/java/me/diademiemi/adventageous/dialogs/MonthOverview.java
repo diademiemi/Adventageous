@@ -55,8 +55,14 @@ public class MonthOverview implements Dialog {
                         builder.addButton(new GUIButton(lockedIcon, 1, Button.get("locked-day", "day", dayObj.getName())), d.getSlot());
                     } else if (day == d.getNumber()) {
                         builder.addButton(new GUIButton(Advent.getAvailableIcon(), 1, Button.get("claim-day", "day", dayObj.getName())) {
+
                             @Override
                             public void onLeftClick(Player p) {
+                                dayObj.claim(p);
+                                close(p);
+                            }
+                            @Override
+                            public void onRightClick(Player p) {
                                 new ClaimDay().show(p, year, month, d.getNumber());
                             }
                         }, d.getSlot());
