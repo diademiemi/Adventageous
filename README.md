@@ -4,6 +4,9 @@
 
 Adventageous is a Spigot plugin that allows you to create advent calendars for your server. Despite it's name, this plugin can be used to create calendars for any month, not just the Christmas season. It's perfect for daily rewards, or for creating fun rewards leading up to server events!  
 
+## Showcase
+![Showcase](img/showcase.gif)  
+
 ## Compatibility
 This plugin is tested on Spigot 1.13.2 and Paper 1.19.2, I expect it to work on any version of Spigot or Paper 1.13.2 and above.
 
@@ -16,9 +19,6 @@ This plugin is tested on Spigot 1.13.2 and Paper 1.19.2, I expect it to work on 
 - Preserves any items data, including enchantments, potion effects, and more!
 - Set a custom name for every month/day, to personalize your calendar to your server!
 - Players can only claim items if their inventory has enough space for them
-
-## Showcase
-![Showcase](img/showcase.gif)  
 
 ### Permissions
 - `adventageous.admin` - Allows the player to use the admin UI.  
