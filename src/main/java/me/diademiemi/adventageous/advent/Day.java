@@ -187,11 +187,11 @@ public class Day implements ConfigurationSerializable {
         return this.playersClaimed.contains(player);
     }
 
-    public void claim(Player player) {
+    public Boolean claim(Player player) {
         // Check if player has already claimed
         if (hasPlayerClaimed(player.getUniqueId().toString())) {
             Message.send(player, "already-claimed");
-            return;
+            return false;
         }
         // Check if player has enough space in inventory
         int emptySlots = 0;
@@ -202,7 +202,7 @@ public class Day implements ConfigurationSerializable {
         }
         if (emptySlots < rewards.size()) {
             Message.send(player, "not-enough-space");
-            return;
+            return false;
         }
 
         // Give player rewards
@@ -210,6 +210,7 @@ public class Day implements ConfigurationSerializable {
         for (ItemStack reward : rewards) {
             player.getInventory().addItem(reward);
         }
+        return true;
 
     }
 

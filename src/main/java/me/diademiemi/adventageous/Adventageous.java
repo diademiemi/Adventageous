@@ -27,7 +27,7 @@ public final class Adventageous extends JavaPlugin {
     private static PluginManager pm;
 
     private static String[] permissions = new String[]{
-            "help",
+            "advent.claim",
             "advent",
             "admin",
     };

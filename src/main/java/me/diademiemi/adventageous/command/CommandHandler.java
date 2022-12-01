@@ -1,5 +1,8 @@
 package me.diademiemi.adventageous.command;
 
+import me.diademiemi.adventageous.advent.Advent;
+import me.diademiemi.adventageous.advent.Day;
+import me.diademiemi.adventageous.advent.Year;
 import me.diademiemi.adventageous.dialogs.AdminMenu;
 import me.diademiemi.adventageous.dialogs.MonthOverview;
 import me.diademiemi.adventageous.lang.Message;
@@ -36,14 +39,45 @@ public class CommandHandler implements CommandExecutor {
                 }
             }
         } else if (label.equalsIgnoreCase("advent")) {
-            if (sender instanceof Player) {
-                if (sender.hasPermission("adventageous.advent")) {
-                    new MonthOverview().show((Player) sender, date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+            if (args.length == 0) {
+                if (sender instanceof Player) {
+                    if (sender.hasPermission("adventageous.advent")) {
+                        new MonthOverview().show((Player) sender, date.getYear(), date.getMonth().getValue(), date.getDayOfMonth());
+                    } else {
+                        Message.send(sender, "no-permission");
+                    }
                 } else {
-                    Message.send(sender, "no-permission");
+                    Message.send(sender, "no-console");
                 }
-            } else {
-                Message.send(sender, "no-console");
+            } else if (args.length == 1) {
+                switch (args[0]) {
+                    case "claim":
+                        if (sender.hasPermission("adventageous.advent.claim")) {
+                            Year yearObj = Advent.getYear(date.getYear());
+                            if (yearObj == null) {
+                                Message.send(sender, "no-active-month");
+                                return true;
+                            }
+                            if (yearObj.getMonth(date.getMonth().getValue() - 1) == null) {
+                                Message.send(sender, "no-active-month");
+                                return true;
+                            }
+                            Day dayObj = yearObj.getMonth(date.getMonth().getValue() - 1).getDay(date.getDayOfMonth() - 1);
+                            if (dayObj != null && dayObj.getRewards().size() > 0 && !dayObj.isHidden()) {
+                                if (dayObj.claim((Player) sender)) {
+                                    Message.send(sender, "claimed");
+                                }
+                                return true;
+                            }
+                        } else {
+                            Message.send(sender, "no-permission");
+                        }
+
+                        break;
+                    default:
+                        Message.send(sender, "unknown-arguments", "label", label);
+                        break;
+                }
             }
         }
         return true;
