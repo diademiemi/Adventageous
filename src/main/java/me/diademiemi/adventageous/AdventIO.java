@@ -41,7 +41,9 @@ public class AdventIO {
                 for (String key : data.getConfigurationSection("years").getKeys(false)) {
                     Advent.addYear((Year) data.get("years." + key));
                 }
-                Advent.setOffset(data.getString("offset"));
+                if (data.getString("offset") != null) {
+                    Advent.setOffset(data.getString("offset"));
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
