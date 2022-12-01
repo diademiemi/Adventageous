@@ -28,12 +28,10 @@ public class CommandHandler implements CommandExecutor {
             // Get first character
             char firstChar = offset.charAt(0);
             if (firstChar == '+') {
-                System.out.println("Offset is positive" + offset);
                 // Get the rest of the string
                 String rest = offset.substring(1);
                 // Get the number
                 int number = Integer.parseInt(rest);
-                System.out.println(number);
                 // Add the number to the date as minutes
                 date = date.plusMinutes(number);
             } else if (firstChar == '-') {
