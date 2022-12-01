@@ -32,6 +32,11 @@ public class ClaimDay implements Dialog {
             if (i < dayObj.getRewards().size() && dayObj.getRewards().get(i) != null) {
                 int finalI = i;
                 builder.addButton(new GUIButton(dayObj.getRewards().get(finalI)) {
+                    @Override
+                    public void onLeftClick(Player p) {
+                        dayObj.claim(p);
+                        new MonthOverview().show(p, year, month, day);
+                    }
                 }, i);
             }
         }
