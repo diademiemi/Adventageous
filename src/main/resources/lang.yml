@@ -12,6 +12,9 @@ messages:
   no-active-month: "&4There is no active advent calendar."
   no-active-reward: "&4There is no active reward."
   join-today-available: "&a&lToday's reward is available! &r&aType &4/advent &ato claim it."
+  admin-enter-offset: "&aEnter the time offset as +/- an amount of minutes. Example: -30"
+  admin-offset-set: "&aThe time offset has been set to &4{{ offset }}&a minutes."
+  admin-invalid-offset: "&cInvalid offset entered. Example: -30"
 titles:
   admin-main-menu: "Admin Menu"
   admin-year-config: "Config: {{ year }}"
@@ -92,6 +95,11 @@ buttons:
     lore:
       - "Set a custom name for this day"
       - "Current name: {{ name }}"
+  admin-configure-offset:
+    title: "Configure offset"
+    lore:
+      - "Set the time offset in minutes"
+      - "Current offset: {{ offset }}"
   # Player
   claim-day:
     title: "Claim {{ day }}"

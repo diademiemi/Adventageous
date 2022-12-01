@@ -25,6 +25,7 @@ public class AdventIO {
         data.set("years", Advent.getYears());
         data.set("availableIcon", Advent.getAvailableIcon().name());
         data.set("initialised", true);
+        data.set("offset", Advent.getOffset());
         try {
             data.save(dataFile);
         } catch (Exception e) {
@@ -40,6 +41,7 @@ public class AdventIO {
                 for (String key : data.getConfigurationSection("years").getKeys(false)) {
                     Advent.addYear((Year) data.get("years." + key));
                 }
+                Advent.setOffset(data.getString("offset"));
             } catch (Exception e) {
                 e.printStackTrace();
             }

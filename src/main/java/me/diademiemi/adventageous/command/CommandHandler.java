@@ -11,13 +11,40 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAmount;
 
 public class CommandHandler implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        LocalDate date = LocalDate.now();
+        LocalDateTime date = LocalDateTime.now();
+        if (Advent.getOffset() != null && Advent.getOffset() != "-0") {
+            String offset = Advent.getOffset();
+            // Get first character
+            char firstChar = offset.charAt(0);
+            if (firstChar == '+') {
+                System.out.println("Offset is positive" + offset);
+                // Get the rest of the string
+                String rest = offset.substring(1);
+                // Get the number
+                int number = Integer.parseInt(rest);
+                System.out.println(number);
+                // Add the number to the date as minutes
+                date = date.plusMinutes(number);
+            } else if (firstChar == '-') {
+                // Get the rest of the string
+                String rest = offset.substring(1);
+                // Get the number
+                int number = Integer.parseInt(rest);
+                // Add the number to the date as minutes
+                date = date.minusMinutes(number);
+            }
+        }
         if (label.equalsIgnoreCase("adventageous")) {
             if (args.length == 0) {
                 if (sender instanceof Player) {

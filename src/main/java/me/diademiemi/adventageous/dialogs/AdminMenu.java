@@ -1,6 +1,7 @@
 package me.diademiemi.adventageous.dialogs;
 
 import me.diademiemi.adventageous.AdventIO;
+import me.diademiemi.adventageous.advent.Advent;
 import me.diademiemi.adventageous.gui.Dialog;
 import me.diademiemi.adventageous.gui.GUIButton;
 import me.diademiemi.adventageous.gui.menu.Menu;
@@ -19,6 +20,14 @@ public class AdminMenu implements Dialog {
     public Menu create(Player p, Object... args) {
         MenuBuilder builder = new MenuBuilder(Title.get("admin-main-menu"));
         builder.setSize(MenuSize.ONE_ROW);
+        builder.addButton(new GUIButton(Material.CLOCK, 1, Button.get("admin-configure-offset", "offset", Advent.getOffset())) {
+            @Override
+            public void onLeftClick(Player p) {
+                close(p);
+                new AdminIptSetOffset(p);
+            }
+        }, 2);
+
         builder.addButton(new GUIButton(Material.LIME_SHULKER_BOX, 1, Button.get("admin-configure-advents")) {
             LocalDate date = LocalDate.now();
             @Override
