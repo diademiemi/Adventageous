@@ -23,7 +23,7 @@ public class CommandHandler implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         LocalDateTime date = LocalDateTime.now();
-        if (Advent.getOffset() != null && Advent.getOffset() != "-0") {
+        if (Advent.getOffset() != null && Advent.getOffset() != "-0" && Advent.getOffset() != "+0") {
             String offset = Advent.getOffset();
             // Get first character
             char firstChar = offset.charAt(0);
