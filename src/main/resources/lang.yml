@@ -1,5 +1,7 @@
 # Make sure all entries are present
-# If you want to add more languages, copy this file and translate it
+# If this is set to false, this file will be overwritten with the plugins version on every start, ensuring all entries are present
+# Set this to true to keep your changes
+allow-modification: false
 messages:
   no-permission: "&cYou don't have permission to do that."
   no-console: "&cYou can't do that from the console."

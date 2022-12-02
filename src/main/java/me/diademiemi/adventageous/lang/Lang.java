@@ -24,7 +24,20 @@ public class Lang {
 
     public static void init() {
         langFile = new File(Adventageous.getPlugin().getDataFolder(), "lang.yml");
-        Adventageous.getPlugin().saveResource("lang.yml", true);
+        if (!langFile.exists()) {
+            langFile.getParentFile().mkdirs();
+            Adventageous.getPlugin().saveResource("lang.yml", true);
+        }
+        language = YamlConfiguration.loadConfiguration(langFile);
+        System.out.println(langFile);
+        System.out.println(language);
+        System.out.println(language.get("allow-modification"));
+        System.out.println(language.getBoolean("allow-modification"));
+
+        if (language.get("allow-modification") == null || (language.get("allow-modification") != null && !language.getBoolean("allow-modification"))) {
+            System.out.println("saving");
+            Adventageous.getPlugin().saveResource("lang.yml", true);
+        }
     }
 
     public static void loadConfig() {
