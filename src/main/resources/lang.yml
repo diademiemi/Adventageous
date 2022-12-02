@@ -123,6 +123,11 @@ buttons:
     lore:
       - "Set the particle to play when a player claims a reward"
       - "Current particle: {{ particle }}"
+  admin-toggle-reminder:
+    title: "Toggle new reward available message"
+    lore:
+      - "Send a message when a player logs in and a reward is available"
+      - "Current state: {{ state }}"
   # Player
   claim-day:
     title: "Claim {{ day }}"

@@ -28,6 +28,7 @@ public class AdventIO {
         data.set("offset", Advent.getOffset());
         data.set("claimSound", Advent.getClaimSound());
         data.set("claimParticle", Advent.getClaimParticle());
+        data.set("sendDailyReminder", Advent.getSendDailyReminder());
         try {
             data.save(dataFile);
         } catch (Exception e) {
@@ -51,6 +52,9 @@ public class AdventIO {
                 }
                 if (data.getString("claimParticle") != null) {
                     Advent.setClaimParticle(data.getString("claimParticle"));
+                }
+                if (data.getString("sendDailyReminder") != null) {
+                    Advent.setSendDailyReminder(data.getBoolean("sendDailyReminder"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

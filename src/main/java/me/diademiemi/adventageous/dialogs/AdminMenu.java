@@ -64,12 +64,30 @@ public class AdminMenu implements Dialog {
             }
         }, 6);
 
+        if (Advent.getSendDailyReminder()) {
+            builder.addButton(new GUIButton(Material.LIME_WOOL, 1, Button.get("admin-toggle-reminder", "state", "enabled")) {
+                @Override
+                public void onLeftClick(Player p) {
+                    Advent.setSendDailyReminder(false);
+                    new AdminMenu().show(p);
+                }
+            }, 7);
+        } else {
+            builder.addButton(new GUIButton(Material.RED_WOOL, 1, Button.get("admin-toggle-reminder", "state", "disabled")) {
+                @Override
+                public void onLeftClick(Player p) {
+                    Advent.setSendDailyReminder(true);
+                    new AdminMenu().show(p);
+                }
+            }, 7);
+        }
+
         builder.addButton(new GUIButton(Material.WRITABLE_BOOK, 1, Button.get("admin-write-data")) {
             @Override
             public void onLeftClick(Player p) {
                 AdventIO.writeConfig();
             }
-        }, 7);
+        }, 8);
 
         return builder.build(p);
     }

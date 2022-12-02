@@ -20,6 +20,8 @@ public class Advent {
 
     public static String claimParticle = "VILLAGER_HAPPY";
 
+    public static Boolean sendDailyReminder = true;
+
     public static void addYear(Year year) {
         years.put(year.getYear(), year);
     }
@@ -120,5 +122,12 @@ public class Advent {
         }
     }
 
+    public static Boolean getSendDailyReminder() {
+        return sendDailyReminder;
+    }
+
+    public static void setSendDailyReminder(Boolean sendDailyReminder) {
+        Advent.sendDailyReminder = sendDailyReminder;
+    }
 
 }

@@ -14,6 +14,7 @@ public class AdventListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        if (!Advent.getSendDailyReminder()) return;
         Player player = event.getPlayer();
         LocalDateTime date = LocalDateTime.now();
         if (Advent.getOffset() != null && Advent.getOffset() != "-0" && Advent.getOffset() != "+0") {
